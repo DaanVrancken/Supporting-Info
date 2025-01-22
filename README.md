@@ -12,7 +12,12 @@ The data presented here is licensed under the CC BY-SA 4.0 international license
 Additional information concerning the data is available upon request from the authors.
 
 ## HubbardMPS
-The directory ```HubbardMPS``` contains a Julia project for the tensor network calculations of one-dimensional Hubbard models. A version of the code base under active development can be found in the repository [HubbardTN](https://github.com/DaanVrancken/HubbardTN).
+This directory contains a Julia project for the tensor network calculations of one-dimensional Hubbard models.
 
-## PySCF Calculations
-In the folder ```PySCF_calculations```, the code used for downfolding the materials trans-polyacetylene and polythiophene is stored.
+A version of the code base under active development can be found in the repository [HubbardTN](https://github.com/DaanVrancken/HubbardTN).
+
+## PySCF_calculations
+This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene is stored.
+
+## VASP_calculations
+This directory contains both the information on the optimized structures and the downfolding procedure of Sr$_2$CuO$_3$.
