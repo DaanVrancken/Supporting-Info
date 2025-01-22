@@ -20,4 +20,4 @@ A version of the code base under active development can be found in the reposito
 This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene.
 
 ## VASP_calculations
-This directory contains both the information on the optimized structures and the downfolding procedure of Sr<sub>2<sub>CuO<sub>3<sub>.
+This directory contains both the information on the optimized structures and the downfolding procedure of Sr<sub>2</sub>CuO<sub>3</sub>.
