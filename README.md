@@ -17,7 +17,7 @@ This directory contains a Julia project for the tensor network calculations of o
 A version of the code base under active development can be found in the repository [HubbardTN](https://github.com/DaanVrancken/HubbardTN).
 
 ## PySCF_calculations
-This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene is stored.
+This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene.
 
 ## VASP_calculations
 This directory contains both the information on the optimized structures and the downfolding procedure of Sr$_2$CuO$_3$.
