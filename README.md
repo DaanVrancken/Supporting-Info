@@ -1,7 +1,7 @@
 # Table of contents
 This GitHub repository contains the input and raw output data accompanying the manuscript
 
-**Strongly correlated materials, DFT, cRPA, tensor networks, matrix product states**
+**Combining downfolding techniques and tensor networks to accurately simulate strongly correlated materials**
 
 by Daan Vrancken, Simon Ganne, Daan Verraes, Tom Braeckevelt, Jutho Haegeman, and Veronique Van Speybroeck.
 
