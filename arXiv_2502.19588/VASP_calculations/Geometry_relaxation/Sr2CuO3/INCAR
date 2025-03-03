@@ -1,0 +1,16 @@
+PSTRESS = 0
+SYSTEM = Sr2CuO4                     # Title of the SYSTEM
+ISMEAR = 0                            # Gaussian smearing                       
+IBRION = 2                            # for Ionic relaxation (conjugate gradient algorithm)
+POTIM = 0.25                          # step width in ionic relaxations
+ISIF = 3                              # Moves ionic positions and cell shape, but not its volume (related to pressure)
+NSW = 100                             # NSW sets the maximum number of ionic steps.
+NELM = 600                            # NELM sets the maximum number of electronic self-consistency steps
+NELMIN = 6                            # NELMIN specifies the minimum number of electronic self-consistency steps
+ISPIN = 1                             # ISPIN = 1 Non-Spin polarised DFT, 2-Spin polarised Calculation
+ISYM = 0                              # Might be essential for phase transformations?
+PREC = high                           # Better convergence absolute energies and stress tensor
+EDIFF = 1E-09                         # SCF energy convergence, in eV
+ENCUT = 600.0                         # you can find it from POTCAR : ENMAX  =  400.000  (Carbon atom in POTCAR)         
+IVDW = 12                             # DFT-D3 method of Grimme with zero-damping function
+NCORE = 8

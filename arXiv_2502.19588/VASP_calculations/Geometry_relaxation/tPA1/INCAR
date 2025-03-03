@@ -1,0 +1,27 @@
+NCORE = 2
+NPAR = 8 
+SYSTEM = INCAR-For-OPT                # Title of the SYSTEM
+LWAVE = .FALSE.                       # Write WAVECAR or not
+LCHARG = .FALSE.                      # Write CHGCAR or not
+ISTART = 1                            # Read existing wavefunction, if there, other wise ISTART = 0
+ISMEAR = 0                            # Gaussian smearing, Semiconductors or insulators use 0,   metals : 1)
+SIGMA = 0.04                          # Smearing value in 0.03-0.05 eV semiconductors or insulators, metals:0.2)                        
+ICHARG = 2                            # Default: ICHARG	= 2
+IBRION = 2                            # for Ionic relaxation (conjugate gradient algorithm)
+POTIM = 0.2                           # 0.5	if IBRION = 1, 2, and 3 (ionic relaxation)
+ISIF = 2                              # Moves ionic positions, if ISIF = 3 moves cell volume and cell shape          
+NSW = 400                             # NSW sets the maximum number of ionic steps.
+NELM = 300                            # NELM sets the maximum number of electronic self-consistency steps
+NELMIN = 4                            # NELMIN specifies the minimum number of electronic self-consistency steps
+ISYM = -1                             # ISYM= 1 | 2 | 3, switches on the use of symmetry. For ISYM=-1 | 0, the use of symmetry is switched off.
+ISPIN = 1                             # ISPIN = 1 Non-Spin polarised DFT, 2-Spin polarised Calculations
+ADDGRID = .TRUE.
+ALGO = Normal                         # ALGO=VeryFast selects IALGO=48 (RMM-DIIS)
+LREAL = False
+PREC = Accurate
+EDIFF = 1E-08                         # SCF energy convergence, in eV
+EDIFFG = 1E-06                        # Ionic convergence, (eV/AA)
+ENCUT = 600.0                         # you can find it from POTCAR : ENMAX  =  400.000  (Carbon atom in POTCAR)         
+
+IVDW = 12                             # DFT-D3 method of Grimme with zero-damping function
+
