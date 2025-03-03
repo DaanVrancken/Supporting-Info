@@ -1,11 +1,11 @@
 # Table of contents
 This GitHub repository contains the input and raw output data accompanying the manuscript
 
-**Combining downfolding techniques and tensor networks to accurately simulate strongly correlated materials**
+**Quantitative description of strongly correlated materials by combining downfolding techniques and tensor networks**
 
-by Daan Vrancken, Simon Ganne, Daan Verraes, Tom Braeckevelt, Jutho Haegeman, and Veronique Van Speybroeck.
+by Daan Vrancken, Simon Ganne, Daan Verraes, Tom Braeckevelt, Lukas Devos, Jutho Haegeman, and Veronique Van Speybroeck.
 
-It was published in ...
+It was published [online](https://arxiv.org/abs/2502.19588).
 
 The data presented here is licensed under the CC BY-SA 4.0 international license, a copy of which can be found [here](https://creativecommons.org/licenses/by-sa/4.0/). Under this license, you can copy and redistribute the material in any medium or format as long as you give appropriate credit, provide a link to the license, and indicate if changes were made.
 
@@ -20,4 +20,4 @@ A version of the code base under active development can be found in the reposito
 This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene.
 
 ## VASP_calculations
-This directory contains both the information on the optimized structures and the downfolding procedure of Sr<sub>2</sub>CuO<sub>3</sub>. In the calculations, version 6.4.2 has been used.
+This directory contains both the information on the structure optimizations and the downfolding procedure of Sr<sub>2</sub>CuO<sub>3</sub>. In the calculations, version 6.4.2 has been used.
