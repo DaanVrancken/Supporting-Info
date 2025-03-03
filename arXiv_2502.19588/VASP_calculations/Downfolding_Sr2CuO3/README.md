@@ -1,1 +1,0 @@
-# Downfolding Sr2CuO3

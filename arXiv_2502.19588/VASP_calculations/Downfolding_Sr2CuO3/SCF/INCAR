@@ -1,0 +1,6 @@
+SYSTEM  = Sr2CuO3                     # system name
+NBANDS = 144                           # small number  of bands
+ISMEAR = 0                             # Gaussian smearing
+ENCUT = 600.0                          # Converge if feasible
+EDIFF = 1E-8                           # high precision for groundstate calculation
+KPAR = 2                               # parallelization of k-points in two groups

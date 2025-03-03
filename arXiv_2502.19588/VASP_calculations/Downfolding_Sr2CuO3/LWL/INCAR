@@ -1,0 +1,11 @@
+SYSTEM = Sr2CuO3                       # system name
+ISMEAR = 0                             # Gaussian smearing
+SIGMA = 0.04                           # Width of the smearing in eV
+KPAR = 2                               # parallelization of k-points in two groups
+NCORE = 2
+ALGO = Exact                           # exact diagonalization
+NELM = 1                               # one electronic step suffices, since WAVECAR from previous step is present
+NBANDS = 192                           # need for a lot of bands in GW
+ENCUT = 600.0                         
+EDIFF = 1E-8                           # high precision for groundstate calculation
+LOPTICS = .TRUE.                       # we need d phi/ d k  for GW calculations for long-wave limit

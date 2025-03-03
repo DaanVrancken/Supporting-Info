@@ -1,0 +1,49 @@
+System = Sr2CuO3                       # system name
+ISMEAR = 0                             # Gaussian smearing
+LWAVE = .FALSE.                        # do not overwrite WAVECAR
+LCHARG = .FALSE.                       # do not overwrite CHGCAR
+ALGO = NONE                            # Only W90 stuff
+NBANDS = 192                           # CRPA needs many empty states
+PRECFOCK = Fast                        # fast mode for FFTs
+LWANNIER90_RUN = .TRUE.                # Run W90 in library mode
+LWRITE_WANPROJ = .TRUE.                # write wannier projection file
+LWRITE_UNK = .TRUE.                    # cell-periodic part of the relevant Bloch functions
+
+# Wannier90 input:
+NUM_WANN = 4     
+WANNIER90_WIN = "
+num_wann =    4
+num_bands=   192
+
+# PBE energy window
+dis_win_min = 2.30
+dis_win_max = 4.75
+
+dis_froz_min = 2.70
+dis_froz_max = 4.75
+
+begin projections
+f=0.25,0.00,0.00:dx2-y2
+f=0.75,0.00,0.00:dx2-y2
+f=0.00,0.50,0.50:dx2-y2
+f=0.50,0.50,0.50:dx2-y2
+end projections
+
+guiding_centres = true
+translate_home_cell = true
+
+!restart         =  plot
+wannier_plot      =  true
+wannier_plot_supercell = 5
+bands_plot      =  true
+
+begin kpoint_path
+  G  0.0 0.0 0.0  X  0.5 0.5 0.5
+  X  0.5 0.5 0.5  M  0.5 0.0 0.5
+  M  0.5 0.0 0.5  Z  0.0 0.0 0.5
+  Z  0.0 0.0 0.5  Y  0.0 0.5 0.0
+  Y  0.0 0.5 0.0  G  0.0 0.0 0.0
+end kpoint_path
+
+bands_num_points 50
+"

@@ -1,0 +1,11 @@
+SYSTEM = Sr2CuO3                      # system name
+ISMEAR = 0                             # Gaussian smearing
+EDIFF = 1E-8                           # tight convergence criterion
+ENCUT = 600.0                          # PLane wave basis set cut off
+NBANDS = 192                           # Plotted bands
+LWAVE = .FALSE.                        # do not overwrite WAVECAR
+LCHARG = .FALSE.                       # do not overwrite CHGCAR
+ICHARG = 11                            # use CHGCAR file for interpolation
+LORBIT = 11                            # compute lm-decomposed states
+EMIN = -40 ; EMAX = 40                 # smallest/largest energy included in calculation
+NEDOS = 1000                           # sampling points for DOS
