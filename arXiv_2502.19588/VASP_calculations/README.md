@@ -10,6 +10,7 @@ Contains the input files for hybrid functional and GW calculations of three tran
 1. Run the initial SCF calculation in the folder ```SCF```. Copy the resulting WAVECAR file to the folder ```LWL```.
 2. Run the DFT calculation with a large number of bands in the folder ```LWL```. Copy the WAVECAR and WAVEDER files to both the folders ```GW0``` and ```GW```.
 3. Run the calculation in ```GW0``` for a partially self-consistent and that in ```GW``` for a fully self-consistent calculation.
+
 Note that for the GW calculations the vacuum around the chains was reduced from 20 Å to 12.5 Å to lower the required memory. 
 
 ## Downfolding_Sr2CuO3
