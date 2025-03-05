@@ -12,9 +12,7 @@ The data presented here is licensed under the CC BY-SA 4.0 international license
 Additional information concerning the data is available upon request from the authors.
 
 ## HubbardMPS
-This directory contains a Julia project for the tensor network calculations of one-dimensional Hubbard models.
-
-A version of the code base under active development can be found in the repository [HubbardTN](https://github.com/DaanVrancken/HubbardTN).
+This directory contains a Julia project for the tensor network calculations of one-dimensional Hubbard models. A version of the code base under active development can be found in the repository [HubbardTN](https://github.com/DaanVrancken/HubbardTN).
 
 ## PySCF_calculations
 This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene.
