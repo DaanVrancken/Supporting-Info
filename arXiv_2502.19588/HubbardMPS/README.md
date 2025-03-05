@@ -22,11 +22,11 @@ To (locally) reproduce this project, do the following:
    This will install all necessary packages for you to be able to run the scripts and
    everything should work out of the box, including correctly finding local paths.
 
-You may notice that most scripts start with the commands:
-```julia
-using DrWatson
-@quickactivate "HubbardMPS"
-```
-which auto-activate the project and enable local path handling from DrWatson.
+   You may notice that most scripts start with the commands:
+   ```julia
+   using DrWatson
+   @quickactivate "HubbardMPS"
+   ```
+   which auto-activate the project and enable local path handling from DrWatson.
 
 2. The code for the tensor network calculations of the three materials trans-polyacetylene (tPA), polythiophene (PT), and Sr<sub>2</sub>CuO<sub>3</sub> can be found in the folder ```scripts```. Run them with the required arguments provided as explained in the scripts. You may want to compute the ground state (which is automatically saved) first and perform a second run for the excitations.
