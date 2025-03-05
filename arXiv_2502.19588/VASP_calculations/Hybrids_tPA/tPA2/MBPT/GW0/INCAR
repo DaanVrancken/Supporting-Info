@@ -1,0 +1,13 @@
+SYSTEM = polyacetylene
+ISMEAR = 0
+SIGMA = 0.04
+NELMGW = 5                          ! Usually, three to four iterations are sufficient to obtain accurate QP shifts
+
+ENCUT = 600
+NBANDS = 256                        ! 50-100 bands per atom
+
+ALGO = QPGW0                        ! QPGW0 if non-diagonal terms of sigma required, fully SC: EVGW / QPGW
+LOPTICS = .TRUE. ; LPEAD = .TRUE.   ! ommit this line for metals
+
+NOMEGA = 32                         ! Between 50-100, multiple of number of cores
+MAXMEM = 25000                      ! MB per core

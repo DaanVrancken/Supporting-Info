@@ -6,12 +6,7 @@ This folder contains the VASP input for geometry relaxations, hybrid functional 
 Contains the input files to optimize the geometries of trans-polyacetylene (tPA1 with PBE and tPA2 with B3LYP), polythiophene, and Sr<sub>2</sub>CuO<sub>3</sub>.
 
 ## Hybrids_tPA
-Contains the input files for hybrid functional and GW calculations of trans-polyacetylene. For the GW calculations, initial SCF calculations should be performed (one with low and one with high number of bands).The output files should be reused as follows
-```
-cp ./SCF/WAVECAR ./LWL/WAVECAR
-cp ./LWL/WAVECAR ./GW/WAVECAR
-
-```
+Contains the input files for hybrid functional and GW calculations of three trans-polyacetylene geometries. 
 
 ## Downfolding_Sr2CuO3
 Contains the input files for performing cRPA on Sr<sub>2</sub>CuO<sub>3</sub>. Several steps have to be taken:

@@ -1,0 +1,11 @@
+SYSTEM = polyacetylene
+NCORE = 2
+ISMEAR = 0
+SIGMA = 0.04
+
+ENCUT = 600
+NBANDS = 256
+NELM = 1
+
+ALGO = Exact
+LOPTICS = .TRUE.
