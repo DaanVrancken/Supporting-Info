@@ -18,4 +18,4 @@ This directory contains a Julia project for the tensor network calculations of o
 This directory contains the code used for downfolding the materials trans-polyacetylene and polythiophene.
 
 ## VASP_calculations
-This directory contains both the information on the structure optimizations and the downfolding procedure of Sr<sub>2</sub>CuO<sub>3</sub>. In the calculations, version 6.4.2 has been used.
+This directory contains the VASP input files for the structure optimizations, hybrid functional calculations for trans-polyacetylene, and the downfolding procedure of Sr<sub>2</sub>CuO<sub>3</sub>. In the calculations, version 6.4.2 has been used.
