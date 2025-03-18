@@ -27,8 +27,6 @@ kmesh = [8, 1, 1]
 cell.basis = 'ccpvtz'
 disentangle = "proj"
 
-os.system(f"cp {cd}/properties.py {sd}/.")
-
 a = 2.44924220
 cell.a = np.diag([a, 100, 101])
 cell.atom = [['C',[0.95468272, 8.66095282, 10.00000000]], 

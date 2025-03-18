@@ -40,7 +40,7 @@ cell.atom = [['C', [5.3428333603131781, 12.9585588091268580, 12.0059921782817334
              ['S', [2.6991585058286272, 12.1441114655616680, 12.0079162797617922]]]
 
 # Set k-points, basis set, disentanglement procedure
-kmesh = [8, 1, 1]
+kmesh = [5, 1, 1]
 disentangle = "proj"
 
 kpts = cell.make_kpts(kmesh)
@@ -107,8 +107,6 @@ S  GTH-PBE-q6 GTH-GGA-q6
       0.40947909   1     3.70086987
 
     """)}
-
-os.system(f"cp {cd}/properties.py {sd}/.")
 
 cell.exp_to_discard=0.1
 cell.spin = 0
