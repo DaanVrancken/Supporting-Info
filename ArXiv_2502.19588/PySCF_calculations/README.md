@@ -36,4 +36,4 @@ In order to run the CRPA-code locally several packages need to be installed:
 Run the scripts in the ```scripts``` folder to perform the DFT, Wannierization, and cRPA in one go. The computed tight-binding hopping parameters and interaction parameters are stored in the files `tmn.npy` and `Wmn.npy`, respectively. 
 
 - In `tmn.npy`, the first index represents the destination site of the electron hop (e.g., index 0 corresponds to site `[-3,0,0]` and index 7 to site `[3,0,0]` by default), while the second and third indices define the corresponding hopping matrix.  
-- The file `Wmn.npy` contains interaction parameters with eight indices: the first four specify the site, and the last four correspond to the orbitals at that site.
+- The file `Wmn.npy` contains interaction parameters with eight indices: the first four specify the site, and the last four correspond to the orbitals at the respective site.
