@@ -150,6 +150,7 @@ def run_cRPA(
     )
     np.save(sd + "/Wmn.npy", Wmn)
     np.save(sd + "/Vmn.npy", Vmn)
+    np.save(sd + "/tmn.npy", crpa.t)
     end = time.time()
     PBE.stdout.write(f"Time taken for cRPA: {end-start} seconds")
     return crpa
