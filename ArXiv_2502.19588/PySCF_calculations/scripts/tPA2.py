@@ -10,8 +10,6 @@ sys.path.append('../../')
 from PySCF_calculations.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
 from PySCF_calculations.CRPA import KCRPA, get_hopping
 
-au2eV = 27.211386245988
-
 cmd_dir = os.getcwd()
 cd = os.path.dirname(__file__)
 

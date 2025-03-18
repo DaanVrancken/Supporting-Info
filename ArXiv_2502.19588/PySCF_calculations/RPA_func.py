@@ -4,9 +4,9 @@ import gc
 from collections.abc import Iterator, Callable
 from typing import Union, Optional
 
-from PyFoldHub.helpers.helpers import get_diag_mask
-import PyFoldHub.helpers.DF_tools as DF_tools
-from PyFoldHub.helpers.helpers import *
+from PySCF_calculations.helpers.helpers import get_diag_mask
+import PySCF_calculations.helpers.DF_tools as DF_tools
+from PySCF_calculations.helpers.helpers import *
 
 from pyscf.ao2mo.incore import _conc_mos
 from pyscf.ao2mo import _ao2mo
@@ -14,9 +14,7 @@ from pyscf.pbc import df, dft
 
 from opt_einsum import contract, contract_path
 
-
 au2ev = 27.211386027
-
 
 def get_weights(
     q_scaled: np.ndarray, shape: tuple, mask: np.ndarray = None, nkpts: int = None

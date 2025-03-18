@@ -8,16 +8,14 @@ from pyscf.ao2mo import _ao2mo
 from pyscf.pbc import df, dft
 from pyscf.ao2mo.incore import _conc_mos
 from pyscf.pbc.tools import pbc as pbctools
-import PyFoldHub.helpers.DF_tools as DF_tools
-from PyFoldHub.helpers.helpers import num_elements_mb
+import PySCF_calculations.helpers.DF_tools as DF_tools
+from PySCF_calculations.helpers.helpers import num_elements_mb
 from pyscf.pbc.lib.kpts import KPoints
-from PyFoldHub.RPA_func import *
+from PySCF_calculations.RPA_func import *
 import copy
 
 gc.set_threshold(0)
 einsum = lib.einsum
-
-au2ev = 27.211386027
 
 
 def kernel(

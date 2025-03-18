@@ -1,10 +1,10 @@
-from PyFoldHub.CRPA import KCRPA
+from PySCF_calculations.CRPA import KCRPA
 
 import numpy as np
 
 from pyscf.pbc import scf, df, dft
 from pyscf.lib import chkfile
-import PyFoldHub.pywannier90_s as pyw90
+import PySCF_calculations.pywannier90_s as pyw90
 from pyscf.pbc.lib.kpts import KPoints
 import time
 
