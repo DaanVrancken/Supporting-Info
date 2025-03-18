@@ -1,4 +1,4 @@
-from PyFoldHub.cRPA_run import run_scf, run_bands, run_bands_2, run_wannier, run_cGW
+from PyFoldHub.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
 from PyFoldHub.CRPA import KCRPA, get_hopping
 
 from pyscf.pbc import gto
@@ -14,65 +14,41 @@ au2eV = 27.211386245988
 cmd_dir = os.getcwd()
 cd = os.path.dirname(__file__)
 
-print(sys.argv)
-
-if len(sys.argv) < 2:
-    sd = cd+'/results/{:%d_%m_%y_%H_%M_%S}'.format(datetime.now())
-    os.mkdir(sd)
-else: 
-    sd = cmd_dir+'/'+sys.argv[1]
-    os.mkdir(sd)
+result_map = cd+'/results_{}'.format(sys.argv[0][:-3])
+if not os.path.exists(result_map):
+    os.mkdir(result_map)
+sd = result_map+'/{:%d_%m_%y_%H_%M_%S}'.format(datetime.now())
+os.mkdir(sd)
  
 cell = gto.Cell()
 cell.unit = 'A'
 
-
-if len(sys.argv) >= 5:
-    kmesh = [int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4])]
-    
-else: 
-    kmesh = [7, 1, 1]
-    
-    
-if len(sys.argv) >= 6:
-    cell.basis = sys.argv[5]
-else:
-    cell.basis = 'ccpvdz'
-    cell.build()
-    
-if len(sys.argv) >= 7:
-    nw = sys.argv[6]
-else:
-    nw = 1
-disentangle = "weighted"
+# Set k-points, basis set, disentanglement procedure
+kmesh = [8, 1, 1]
+cell.basis = 'ccpvtz'
+disentangle = "proj"
 
 os.system(f"cp {cd}/properties.py {sd}/.")
 
-
 a = 2.471
 cell.a = np.diag([a, a*kmesh[0], a*kmesh[0]])
-# cell.a = np.diag([2.455, 1.00, 1.00])
 cell.atom = [['C',[0.93699896, 9.99951837, 9.99999960]], 
              ['C',[2.17256226, 10.64948122, 9.99999962]],
              ['H',[0.93681806, 8.90348465, 10.00000025]],
              ['H',[2.17284004, 11.74546053, 10.00000053]]]
-# cell.basis = "ccpvdz"
-# cell.exp_to_discard=0.1
+
 cell.spin = 0
-# cell.ke_cutoff = 1000
-# cell.rcut=np.linalg.norm(cell.a[0])*kmesh[0]
 cell.precision = 1e-10
 cell.build(dimension=1)
 kpts = cell.make_kpts(kmesh)
 nkpts = kpts.shape[0]
-chk_file = "polyacetelyne_PBE.chk"
+chk_file = "polyacetelyne1_PBE.chk"
 cderi_file = False
 smearing = False
 unrestricted = False
 xc = "PBE"
 breaksym = False
 init_guess = '1e'
-# auxbasis = 'def2-universal-jfit'
 auxbasis = None
 
 hspoints = {
@@ -99,10 +75,8 @@ num_wann = 2
 orbs_wan = np.array([4, 5])
 wan_keywords = \
 f"""
- # PBE energy window
+# PBE energy window
 begin projections
-# c=0.676, 7.000, 5.500: pz
-# c=1.953, 7.686, 5.500: pz
 C: pz
 end projections
 
@@ -115,12 +89,7 @@ search_shells = 1000
 dis_win_min     = -10
 dis_win_max     = 5
 
-# dis_froz_max = 0
-# dis_froz_min = -5
-
 write_u_matrices = .TRUE.
-
-# exclude_bands : 1-4, 11-{cell.nao}
 
 bands_plot = true
 
@@ -132,7 +101,7 @@ end kpoint_path
 bands_num_points 15 
 """
 
-PBE = run_scf(sd, cell, kpts, xc, auxbasis, init_guess, breaksym, cderi_file, chk_file, unrestricted, memory=128000)
+PBE = run_scf(sd, cell, kpts, xc, auxbasis, init_guess, breaksym, cderi_file, chk_file, unrestricted)
 w90 = run_wannier(sd, cmd_dir, PBE, cell, kmesh, num_wann, wan_keywords, orbs_wan,  unrestricted)
-cgw = run_cGW(sd, PBE, w90, orbs_wan, unrestricted, disentangle, fc =False, nw=nw, memory=128000)
-run_bands_2(sd, cell, PBE, kpath, plot_wannier, unrestricted, plot_range, plot_title, xticklabels)
+cgw = run_cRPA(sd, PBE, w90, orbs_wan, disentangle)
+run_bands(sd, cell, PBE, kpath, plot_wannier, unrestricted, plot_range, plot_title, xticklabels)

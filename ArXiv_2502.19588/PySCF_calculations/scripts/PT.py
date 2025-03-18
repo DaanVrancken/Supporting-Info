@@ -1,14 +1,11 @@
-import sys
-sys.path.append('../../../')
-
-from PyFoldHub.cRPA_run import run_scf, run_bands, run_bands_2, run_wannier, run_cGW, run_cRPA
-
+from PyFoldHub.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
 from PyFoldHub.CRPA import KCRPA, get_hopping
-from pyscf import lo
 
+# import sys
+# sys.path.append('../../../')
+from pyscf import lo
 import numpy as np
 from pyscf.pbc import gto
-
 import sys
 import os 
 from datetime import datetime
@@ -16,14 +13,11 @@ from datetime import datetime
 cmd_dir = os.getcwd()
 cd = os.path.dirname(__file__)
 
-print(sys.argv)
-
-if len(sys.argv) < 2:
-    sd = cd+'/results/{:%d_%m_%y_%H_%M_%S}'.format(datetime.now())
-    os.mkdir(sd)
-else: 
-    sd = cmd_dir+'/'+sys.argv[1]
-    os.mkdir(sd)
+result_map = cd+'/results_{}'.format(sys.argv[0][:-3])
+if not os.path.exists(result_map):
+    os.mkdir(result_map)
+sd = result_map+'/{:%d_%m_%y_%H_%M_%S}'.format(datetime.now())
+os.mkdir(sd)
  
 cell = gto.Cell()   
 cell.unit = 'A'
@@ -44,26 +38,13 @@ cell.atom = [['C', [5.3428333603131781, 12.9585588091268580, 12.0059921782817334
              ['H', [4.0063392295641780, 15.5251288363021605, 12.0043424370832366]],
              ['S', [6.6039012012530129, 14.1567210320194388, 12.0049821835162405]],
              ['S', [2.6991585058286272, 12.1441114655616680, 12.0079162797617922]]]
-# cell.basis = "ccpvdz"
 
+# Set k-points, basis set, disentanglement procedure
+kmesh = [8, 1, 1]
+disentangle = "proj"
 
-
-basis = "ccpvdz"
-
-if len(sys.argv) >= 5:
-    kmesh = [int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4])]
-    kpts = cell.make_kpts(kmesh)
-    nkpts = kpts.shape[0]
-else: 
-    kmesh = [5, 1, 1]
-    kpts = cell.make_kpts(kmesh)
-    nkpts = kpts.shape[0]
-if len(sys.argv) >= 6:
-    cell.basis = sys.argv[5]
-    cell.build()
-else: 
-    cell.basis = 'ccpvdz'
-
+kpts = cell.make_kpts(kmesh)
+nkpts = kpts.shape[0]
     
 cell.basis = {
     'H': gto.basis.parse("""
@@ -164,11 +145,11 @@ plot_title = "Band structure polythiophene"
 plot_wannier = False
 
 num_wann = 6
-orbs_wan = np.array([20, 21, 22, 23, 24, 25, 26, 27])  # aanpassen
+orbs_wan = np.array([20, 21, 22, 23, 24, 25, 26, 27])
 wan_keywords = \
 f""" 
 # PBE energy window
- exclude_bands : 1-20, 29-{cell.nao}
+exclude_bands : 1-20, 29-{cell.nao}
 
 num_elec_per_state=2
 
@@ -179,11 +160,6 @@ c=0.0545710176350323, 12.9593149255496378, 12.0102387018520318: pz
 c=5.3428333603131781, 12.9585588091268580, 12.0059921782817334: pz
 S: pz
 end projections
-
-# dis_win_min = -8
-# dis_win_max = 2
-# dis_froz_min = -6
-# dis_froz_max = -2
 
 guiding_centres = .true.
 write_u_matrices = .TRUE.
@@ -198,8 +174,7 @@ end kpoint_path
 bands_num_points 50 
 """
 
-PBE = run_scf(sd, cell, kpts, xc, auxbasis, init_guess, breaksym, cderi_file, chk_file, unrestricted, memory=480000)
-#run_bands(sd, cell, PBE, kpath, False, unrestricted, plot_range, plot_title, xticklabels)
+PBE = run_scf(sd, cell, kpts, xc, auxbasis, init_guess, breaksym, cderi_file, chk_file, unrestricted, memory=120000)
 w90 = run_wannier(sd, cmd_dir, PBE, cell, kmesh, num_wann, wan_keywords, orbs_wan,  unrestricted)
-crpa = run_cGW(sd, PBE, w90, orbs_wan, unrestricted, nw=1, memory=480000)
-run_bands_2(sd, cell, PBE, kpath, plot_wannier, unrestricted, plot_range, plot_title, xticklabels)
+crpa = run_cRPA(sd, PBE, w90, orbs_wan)
+run_bands(sd, cell, PBE, kpath, plot_wannier, unrestricted, plot_range, plot_title, xticklabels)
