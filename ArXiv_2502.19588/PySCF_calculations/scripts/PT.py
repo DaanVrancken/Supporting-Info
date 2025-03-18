@@ -1,14 +1,14 @@
-from PyFoldHub.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
-from PyFoldHub.CRPA import KCRPA, get_hopping
-
-# import sys
-# sys.path.append('../../../')
-from pyscf import lo
-import numpy as np
 from pyscf.pbc import gto
-import sys
+import pyscf
+import numpy as np
 import os 
+import sys
 from datetime import datetime
+import matplotlib.pyplot as plt
+
+sys.path.append('../../')
+from PySCF_calculations.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
+from PySCF_calculations.CRPA import KCRPA, get_hopping
 
 cmd_dir = os.getcwd()
 cd = os.path.dirname(__file__)

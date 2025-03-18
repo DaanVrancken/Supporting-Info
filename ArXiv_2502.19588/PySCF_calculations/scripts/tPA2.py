@@ -1,6 +1,3 @@
-from PyFoldHub.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
-from PyFoldHub.CRPA import KCRPA, get_hopping
-
 from pyscf.pbc import gto
 import pyscf
 import numpy as np
@@ -8,6 +5,10 @@ import os
 import sys
 from datetime import datetime
 import matplotlib.pyplot as plt
+
+sys.path.append('../../')
+from PySCF_calculations.cRPA_run import run_scf, run_bands, run_bands, run_wannier, run_cRPA
+from PySCF_calculations.CRPA import KCRPA, get_hopping
 
 au2eV = 27.211386245988
 
